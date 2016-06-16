@@ -1,0 +1,6 @@
+tangods-liberaeventreceiver (1.0.0) unstable; urgency=low
+
+  * Split main repo, initial version of LiberaEventReceiver inividual package
+
+ -- Vasileios Martos <vasileios.martos> Mon, 23 Jun 2016 12:00:00 +0000
+ 
