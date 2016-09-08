@@ -1,4 +1,4 @@
-tangods-liberaeventreceiver (1.0.0) unstable; urgency=low
+tangods-liberaeventreceiver (2.0.0) unstable; urgency=low
 
   * Split main repo, initial version of LiberaEventReceiver inividual package
 
