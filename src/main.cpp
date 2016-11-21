@@ -1,4 +1,4 @@
-/*----- PROTECTED REGION ID(LiberaBrilliancePlus::main.cpp) ENABLED START -----*/
+/*----- PROTECTED REGION ID(LiberaEventReceiver::main.cpp) ENABLED START -----*/
 static const char *RcsId = "$Id:  $";
 //=============================================================================
 //
@@ -38,22 +38,19 @@ static const char *RcsId = "$Id:  $";
 //        (Program Obviously used to Generate tango Object)
 //=============================================================================
 #include <tango.h>
+
 #include <istd/trace.h>
 #include <mci/mci.h>
 
-// Check if crash reporting is used.
-#if defined(ENABLE_CRASH_REPORT)
-#  include <crashreporting/crash_report.h>
-#else
-#  define DECLARE_CRASH_HANDLER
-#  define INSTALL_CRASH_HANDLER
-#endif
-
-DECLARE_CRASH_HANDLER;
-
 int main(int argc,char *argv[])
 {
-	INSTALL_CRASH_HANDLER
+    /*istd::TraceInit("-");
+    istd::TraceStart(istd::eTrcLow);
+
+    // need to initialize CORBA from mci before Tango does it
+    mci::Init(argc, argv);*/
+
+
 	// Initialize MCI layer
 	try {
 		mci::Init();
@@ -64,11 +61,12 @@ int main(int argc,char *argv[])
 		cout << "Exiting" << endl;
 	}
 
+    Tango::Util *tg = NULL;
 	try
 	{
 		// Initialise the device server
 		//----------------------------------------
-		Tango::Util *tg = Tango::Util::init(argc,argv);
+		tg = Tango::Util::init(argc,argv);
 
 		// Create the device server singleton 
 		//	which will create everything
@@ -93,6 +91,8 @@ int main(int argc,char *argv[])
 		cout << "Exiting" << endl;
 	}
 	Tango::Util::instance()->server_cleanup();
+
+
 	// Destroy MCI layer
 	try {
 		istd::TraceStop();
@@ -104,4 +104,4 @@ int main(int argc,char *argv[])
 	return(0);
 }
 
-/*----- PROTECTED REGION END -----*/	//	LiberaBrilliancePlus::main.cpp
+/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::main.cpp
