@@ -75,7 +75,7 @@ static const char *RcsId = "$Id:  $";
 //  PMNotificationCounter  |  Tango::DevShort	Scalar
 //  OffsetTune             |  Tango::DevLong	Scalar
 //  CompensateTune         |  Tango::DevBoolean	Scalar
-//  MCPLLStatus            |  Tango::DevBoolean	Scalar
+//  PLLLock                |  Tango::DevBoolean	Scalar
 //  Temp3                  |  Tango::DevShort	Scalar
 //  T0Delay                |  Tango::DevLong	Scalar
 //  RtcDecoderSwitch       |  Tango::DevShort	Scalar
@@ -117,6 +117,8 @@ static const char *RcsId = "$Id:  $";
 //  RtcT1inMask            |  Tango::DevLong	Scalar
 //  RtcT2inMask            |  Tango::DevLong	Scalar
 //  DDTriggerCounter       |  Tango::DevLong	Scalar
+//  MCLock                 |  Tango::DevBoolean	Scalar
+//  PLLClockGood           |  Tango::DevBoolean	Scalar
 //  UserData               |  Tango::DevShort	Spectrum  ( max = 256)
 //  logs                   |  Tango::DevString	Spectrum  ( max = 2048)
 //================================================================
@@ -246,12 +248,22 @@ void LiberaEventReceiver::init_device()
 
     m_libera->AddScalar(tim + "pll.vcxo_offset", attr_OffsetTune_read);
     m_libera->AddScalar(tim + "pll.compensate_offset", attr_CompensateTune_read);
+
     m_libera->AddScalar("application.synchronize_lmt",
     		attr_SynchronizeLMT_read, LiberaAttr::ULONGLONG2LONG, LiberaAttr::LONG2ULONGLONG);
-    m_libera->AddScalar(tim + "pll.locked", attr_MCPLLStatus_read);
+   // m_libera->AddScalar("",attr_SynchronizeLMT_read);
+
+    m_libera->AddScalar(tim + "pll.locked", attr_PLLLock_read);
+    m_libera->AddScalar(tim + "clk_mgr.mc.locked", attr_MCLock_read);
+    m_libera->AddScalar(tim + "pll.clk_good", attr_PLLClockGood_read);
+
+    //TODO
+    //TEST
 
     m_libera->AddScalarPM("boards.evrx2.sensors.ID_6.value",
         attr_Temp3_read, LiberaAttr::DBL2SHORT);
+    //m_libera->AddScalar("",attr_Temp3_read);
+    //*attr_Temp3_read = 60;
     //m_libera->AddScalarPM("fans.left_", attr_Fan1Speed_read, LiberaAttr::FAN2SHORT);
     //m_libera->AddScalarPM("fans.right_", attr_Fan2Speed_read, LiberaAttr::FAN2SHORT);
 
@@ -932,7 +944,7 @@ void LiberaEventReceiver::get_device_property()
 //--------------------------------------------------------
 void LiberaEventReceiver::always_executed_hook()
 {
-	INFO_STREAM << "LiberaEventReceiver::always_executed_hook()  " << device_name << endl;
+	DEBUG_STREAM << "LiberaEventReceiver::always_executed_hook()  " << device_name << endl;
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::always_executed_hook) ENABLED START -----*/
 
 
@@ -1072,21 +1084,21 @@ void LiberaEventReceiver::write_CompensateTune(Tango::WAttribute &attr)
 }
 //--------------------------------------------------------
 /**
- *	Read attribute MCPLLStatus related method
- *	Description: Indicates the MC PLL status (1=locked, 0=unlocked)
+ *	Read attribute PLLLock related method
+ *	Description: boards.evrx2.pll.locked
  *
  *	Data type:	Tango::DevBoolean
  *	Attr type:	Scalar
  */
 //--------------------------------------------------------
-void LiberaEventReceiver::read_MCPLLStatus(Tango::Attribute &attr)
+void LiberaEventReceiver::read_PLLLock(Tango::Attribute &attr)
 {
-	DEBUG_STREAM << "LiberaEventReceiver::read_MCPLLStatus(Tango::Attribute &attr) entering... " << endl;
-	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_MCPLLStatus) ENABLED START -----*/
+	DEBUG_STREAM << "LiberaEventReceiver::read_PLLLock(Tango::Attribute &attr) entering... " << endl;
+	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_PLLLock) ENABLED START -----*/
 	//	Set the attribute value
-	attr.set_value(attr_MCPLLStatus_read);
+	attr.set_value(attr_PLLLock_read);
 	
-	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_MCPLLStatus
+	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_PLLLock
 }
 //--------------------------------------------------------
 /**
@@ -2575,6 +2587,42 @@ void LiberaEventReceiver::read_DDTriggerCounter(Tango::Attribute &attr)
 }
 //--------------------------------------------------------
 /**
+ *	Read attribute MCLock related method
+ *	Description: boards.evrx2.pll.locked
+ *
+ *	Data type:	Tango::DevBoolean
+ *	Attr type:	Scalar
+ */
+//--------------------------------------------------------
+void LiberaEventReceiver::read_MCLock(Tango::Attribute &attr)
+{
+	DEBUG_STREAM << "LiberaEventReceiver::read_MCLock(Tango::Attribute &attr) entering... " << endl;
+	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_MCLock) ENABLED START -----*/
+	//	Set the attribute value
+	attr.set_value(attr_MCLock_read);
+	
+	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_MCLock
+}
+//--------------------------------------------------------
+/**
+ *	Read attribute PLLClockGood related method
+ *	Description: boards.evrx2.clk_mgr.mc.locked
+ *
+ *	Data type:	Tango::DevBoolean
+ *	Attr type:	Scalar
+ */
+//--------------------------------------------------------
+void LiberaEventReceiver::read_PLLClockGood(Tango::Attribute &attr)
+{
+	DEBUG_STREAM << "LiberaEventReceiver::read_PLLClockGood(Tango::Attribute &attr) entering... " << endl;
+	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_PLLClockGood) ENABLED START -----*/
+	//	Set the attribute value
+	attr.set_value(attr_PLLClockGood_read);
+	
+	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_PLLClockGood
+}
+//--------------------------------------------------------
+/**
  *	Read attribute UserData related method
  *	Description: User defined data
  *
@@ -2650,26 +2698,12 @@ Tango::DevState LiberaEventReceiver::dev_state()
 		m_status = m_libera->m_errorStatus;
 		LogStatusGuard(m_status);
 	}
-	else if (*attr_MCPLLStatus_read == false || *attr_RTCTimestampState_read != 1)
+	else if (*attr_PLLLock_read == false || *attr_RTCTimestampState_read != 1 || *attr_MCLock_read == false || *attr_PLLClockGood_read == false )
 	{
 		argout = Tango::ALARM;
-		if (*attr_MCPLLStatus_read == false)
-		{
-			m_status = "MC Pll not locked";
-		}
-		else if (*attr_RTCTimestampState_read != 1)
-		{
-			m_status = "RTC TimeStamp not done";
-		}
-
-		argout = Tango::ALARM;
-	}/*
-	else if(argout == Tango::ALARM) {
-		//Just in case of Tango alarms etc.
-		// avoid to enter in last else
+		m_status = set_timing_status();
 
 	}
-	*/
 	else {
 		argout = Tango::ON;
 		m_status = "Connected to Libera";
@@ -2796,13 +2830,7 @@ void LiberaEventReceiver::announce_synchronization()
 {
 	DEBUG_STREAM << "LiberaEventReceiver::AnnounceSynchronization()  - " << device_name << endl;
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::announce_synchronization) ENABLED START -----*/
-	if(*attr_MCPLLStatus_read) {
-		//cout << *attr_MCPLLStatus_read << endl;
-		//Stop Trigger
-		//m_libera->UpdateScalar(attr_T2Source_read, (short)0);
-                //*t2_in_function_save = *attr_T2inFunction;
-                //Tango::DevLong sync_id = new Tango::DevLong(109);
-		//m_libera->UpdateScalar(attr_T2inFunction_read, sync_id);
+	if(*attr_PLLLock_read) {
 		m_libera->UpdateScalar(attr_T2inFunction_read, (long)109);
                 //delete sync_id;
 		//Announce Synchronization
@@ -2865,8 +2893,23 @@ void LiberaEventReceiver::start_synchronization()
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::start_synchronization) ENABLED START -----*/
 	
 	//	Add your own code
-	
+	m_libera->UpdateScalar(attr_T2inFunction_read, t2inFunction);
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::start_synchronization
+}
+//--------------------------------------------------------
+/**
+ *	Method      : LiberaEventReceiver::add_dynamic_commands()
+ *	Description : Create the dynamic commands if any
+ *                for specified device.
+ */
+//--------------------------------------------------------
+void LiberaEventReceiver::add_dynamic_commands()
+{
+	/*----- PROTECTED REGION ID(LiberaEventReceiver::add_dynamic_commands) ENABLED START -----*/
+	
+	//	Add your own code to create and add dynamic commands if any
+	
+	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::add_dynamic_commands
 }
 
 /*----- PROTECTED REGION ID(LiberaEventReceiver::namespace_ending) ENABLED START -----*/
@@ -2914,6 +2957,25 @@ void LiberaEventReceiver::set_lib_error(std::string nodeinfo)
     m_status = "Error while reading from a node:: "+ nodeinfo +". Please reinit the device";
     LiberaEventReceiver::LogStatusGuard(m_status);
     //throw nodeinfo;
+}
+
+std::string LiberaEventReceiver::set_timing_status()
+{
+	std::string status = "Timing Alarm";
+
+	if (*attr_PLLLock_read == false)
+		status += " - Pll not locked";
+
+	if (*attr_MCLock_read == false)
+		status += " - MC not locked";
+
+	if (*attr_PLLClockGood_read == false)
+		status += " - Pll Clock not good";
+
+	if (*attr_RTCTimestampState_read != 1)
+		status += " - RTC TimeStamp not done";
+
+	return status;
 }
 
 void LiberaEventReceiver::init_settings()

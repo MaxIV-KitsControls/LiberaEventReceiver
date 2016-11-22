@@ -111,17 +111,17 @@ bool LiberaEventReceiver::is_CompensateTune_allowed(TANGO_UNUSED(Tango::AttReqTy
 
 //--------------------------------------------------------
 /**
- *	Method      : LiberaEventReceiver::is_MCPLLStatus_allowed()
- *	Description : Execution allowed for MCPLLStatus attribute
+ *	Method      : LiberaEventReceiver::is_PLLLock_allowed()
+ *	Description : Execution allowed for PLLLock attribute
  */
 //--------------------------------------------------------
-bool LiberaEventReceiver::is_MCPLLStatus_allowed(TANGO_UNUSED(Tango::AttReqType type))
+bool LiberaEventReceiver::is_PLLLock_allowed(TANGO_UNUSED(Tango::AttReqType type))
 {
 
-	//	Not any excluded states for MCPLLStatus attribute in read access.
-	/*----- PROTECTED REGION ID(LiberaEventReceiver::MCPLLStatusStateAllowed_READ) ENABLED START -----*/
+	//	Not any excluded states for PLLLock attribute in read access.
+	/*----- PROTECTED REGION ID(LiberaEventReceiver::PLLLockStateAllowed_READ) ENABLED START -----*/
 	
-	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::MCPLLStatusStateAllowed_READ
+	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::PLLLockStateAllowed_READ
 	return true;
 }
 
@@ -931,6 +931,38 @@ bool LiberaEventReceiver::is_DDTriggerCounter_allowed(TANGO_UNUSED(Tango::AttReq
 
 //--------------------------------------------------------
 /**
+ *	Method      : LiberaEventReceiver::is_MCLock_allowed()
+ *	Description : Execution allowed for MCLock attribute
+ */
+//--------------------------------------------------------
+bool LiberaEventReceiver::is_MCLock_allowed(TANGO_UNUSED(Tango::AttReqType type))
+{
+
+	//	Not any excluded states for MCLock attribute in read access.
+	/*----- PROTECTED REGION ID(LiberaEventReceiver::MCLockStateAllowed_READ) ENABLED START -----*/
+	
+	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::MCLockStateAllowed_READ
+	return true;
+}
+
+//--------------------------------------------------------
+/**
+ *	Method      : LiberaEventReceiver::is_PLLClockGood_allowed()
+ *	Description : Execution allowed for PLLClockGood attribute
+ */
+//--------------------------------------------------------
+bool LiberaEventReceiver::is_PLLClockGood_allowed(TANGO_UNUSED(Tango::AttReqType type))
+{
+
+	//	Not any excluded states for PLLClockGood attribute in read access.
+	/*----- PROTECTED REGION ID(LiberaEventReceiver::PLLClockGoodStateAllowed_READ) ENABLED START -----*/
+	
+	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::PLLClockGoodStateAllowed_READ
+	return true;
+}
+
+//--------------------------------------------------------
+/**
  *	Method      : LiberaEventReceiver::is_UserData_allowed()
  *	Description : Execution allowed for UserData attribute
  */
@@ -960,6 +992,7 @@ bool LiberaEventReceiver::is_logs_allowed(TANGO_UNUSED(Tango::AttReqType type))
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::logsStateAllowed_READ
 	return true;
 }
+
 
 //=================================================
 //		Commands Allowed Methods
@@ -1089,5 +1122,12 @@ bool LiberaEventReceiver::is_StartSynchronization_allowed(TANGO_UNUSED(const COR
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::StartSynchronizationStateAllowed
 	return true;
 }
+
+
+/*----- PROTECTED REGION ID(LiberaEventReceiver::LiberaEventReceiverStateAllowed.AdditionalMethods) ENABLED START -----*/
+
+//	Additional Methods
+
+/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::LiberaEventReceiverStateAllowed.AdditionalMethods
 
 }	//	End of namespace

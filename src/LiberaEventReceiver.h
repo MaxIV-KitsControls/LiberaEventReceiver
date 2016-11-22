@@ -178,7 +178,7 @@ public:
 	Tango::DevShort	*attr_PMNotificationCounter_read;
 	Tango::DevLong	*attr_OffsetTune_read;
 	Tango::DevBoolean	*attr_CompensateTune_read;
-	Tango::DevBoolean	*attr_MCPLLStatus_read;
+	Tango::DevBoolean	*attr_PLLLock_read;
 	Tango::DevShort	*attr_Temp3_read;
 	Tango::DevLong	*attr_T0Delay_read;
 	Tango::DevShort	*attr_RtcDecoderSwitch_read;
@@ -220,6 +220,8 @@ public:
 	Tango::DevLong	*attr_RtcT1inMask_read;
 	Tango::DevLong	*attr_RtcT2inMask_read;
 	Tango::DevLong	*attr_DDTriggerCounter_read;
+	Tango::DevBoolean	*attr_MCLock_read;
+	Tango::DevBoolean	*attr_PLLClockGood_read;
 	Tango::DevShort	*attr_UserData_read;
 	Tango::DevString	*attr_logs_read;
 
@@ -249,7 +251,7 @@ public:
 	LiberaEventReceiver(Tango::DeviceClass *cl,const char *s,const char *d);
 	/**
 	 * The device object destructor.
-	 */	
+	 */
 	~LiberaEventReceiver() {delete_device();};
 
 
@@ -322,14 +324,14 @@ public:
 	virtual void write_CompensateTune(Tango::WAttribute &attr);
 	virtual bool is_CompensateTune_allowed(Tango::AttReqType type);
 /**
- *	Attribute MCPLLStatus related methods
- *	Description: Indicates the MC PLL status (1=locked, 0=unlocked)
+ *	Attribute PLLLock related methods
+ *	Description: boards.evrx2.pll.locked
  *
  *	Data type:	Tango::DevBoolean
  *	Attr type:	Scalar
  */
-	virtual void read_MCPLLStatus(Tango::Attribute &attr);
-	virtual bool is_MCPLLStatus_allowed(Tango::AttReqType type);
+	virtual void read_PLLLock(Tango::Attribute &attr);
+	virtual bool is_PLLLock_allowed(Tango::AttReqType type);
 /**
  *	Attribute Temp3 related methods
  *	Description: Temperature of the hottest component on the timing 
@@ -738,6 +740,24 @@ public:
 	virtual void read_DDTriggerCounter(Tango::Attribute &attr);
 	virtual bool is_DDTriggerCounter_allowed(Tango::AttReqType type);
 /**
+ *	Attribute MCLock related methods
+ *	Description: boards.evrx2.pll.locked
+ *
+ *	Data type:	Tango::DevBoolean
+ *	Attr type:	Scalar
+ */
+	virtual void read_MCLock(Tango::Attribute &attr);
+	virtual bool is_MCLock_allowed(Tango::AttReqType type);
+/**
+ *	Attribute PLLClockGood related methods
+ *	Description: boards.evrx2.clk_mgr.mc.locked
+ *
+ *	Data type:	Tango::DevBoolean
+ *	Attr type:	Scalar
+ */
+	virtual void read_PLLClockGood(Tango::Attribute &attr);
+	virtual bool is_PLLClockGood_allowed(Tango::AttReqType type);
+/**
  *	Attribute UserData related methods
  *	Description: User defined data
  *
@@ -764,6 +784,7 @@ public:
 	 */
 	//--------------------------------------------------------
 	void add_dynamic_attributes();
+
 
 
 
@@ -860,7 +881,7 @@ public:
 
 	//	Additional Method prototypes
     void set_lib_error(std::string nodeinfo);
-    std::string set_interlock_status();
+    std::string set_timing_status();
 
 /*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::Additional Method prototypes
 };

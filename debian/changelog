@@ -1,3 +1,17 @@
+tangods-liberaeventreceiver (2.1.0) unstable; urgency=low
+
+  * Added new timing attributes MCLock and PLLClockGood
+  * Renamed MCPLLLock attribute to PLLLock.
+  * Added new functions for setting timing alarm status.
+
+ -- Vasileios Martos <vasileios.martos> Mon, 15 November 2016 12:00:00 +0000
+ 
+tangods-liberaeventreceiver (2.0.1) unstable; urgency=low
+
+  * Bug Fix StartSynchronization command.
+
+ -- Vasileios Martos <vasileios.martos> Mon, 23 Jun 2016 12:00:00 +0000
+ 
 tangods-liberaeventreceiver (2.0.0) unstable; urgency=low
 
   * Split main repo, initial version of LiberaEventReceiver inividual package

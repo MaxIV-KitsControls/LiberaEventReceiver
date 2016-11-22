@@ -102,17 +102,17 @@ public:
 		{return (static_cast<LiberaEventReceiver *>(dev))->is_CompensateTune_allowed(ty);}
 };
 
-//	Attribute MCPLLStatus class definition
-class MCPLLStatusAttrib: public Tango::Attr
+//	Attribute PLLLock class definition
+class PLLLockAttrib: public Tango::Attr
 {
 public:
-	MCPLLStatusAttrib():Attr("MCPLLStatus",
+	PLLLockAttrib():Attr("PLLLock",
 			Tango::DEV_BOOLEAN, Tango::READ) {};
-	~MCPLLStatusAttrib() {};
+	~PLLLockAttrib() {};
 	virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
-		{(static_cast<LiberaEventReceiver *>(dev))->read_MCPLLStatus(att);}
+		{(static_cast<LiberaEventReceiver *>(dev))->read_PLLLock(att);}
 	virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
-		{return (static_cast<LiberaEventReceiver *>(dev))->is_MCPLLStatus_allowed(ty);}
+		{return (static_cast<LiberaEventReceiver *>(dev))->is_PLLLock_allowed(ty);}
 };
 
 //	Attribute Temp3 class definition
@@ -722,6 +722,32 @@ public:
 		{return (static_cast<LiberaEventReceiver *>(dev))->is_DDTriggerCounter_allowed(ty);}
 };
 
+//	Attribute MCLock class definition
+class MCLockAttrib: public Tango::Attr
+{
+public:
+	MCLockAttrib():Attr("MCLock",
+			Tango::DEV_BOOLEAN, Tango::READ) {};
+	~MCLockAttrib() {};
+	virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
+		{(static_cast<LiberaEventReceiver *>(dev))->read_MCLock(att);}
+	virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
+		{return (static_cast<LiberaEventReceiver *>(dev))->is_MCLock_allowed(ty);}
+};
+
+//	Attribute PLLClockGood class definition
+class PLLClockGoodAttrib: public Tango::Attr
+{
+public:
+	PLLClockGoodAttrib():Attr("PLLClockGood",
+			Tango::DEV_BOOLEAN, Tango::READ) {};
+	~PLLClockGoodAttrib() {};
+	virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
+		{(static_cast<LiberaEventReceiver *>(dev))->read_PLLClockGood(att);}
+	virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
+		{return (static_cast<LiberaEventReceiver *>(dev))->is_PLLClockGood_allowed(ty);}
+};
+
 //	Attribute UserData class definition
 class UserDataAttrib: public Tango::SpectrumAttr
 {
@@ -956,6 +982,7 @@ class LiberaEventReceiverClass : public Tango::DeviceClass
 		static LiberaEventReceiverClass *_instance;
 		void command_factory();
 		void attribute_factory(vector<Tango::Attr *> &);
+		void pipe_factory();
 		void write_class_property();
 		void set_default_property();
 		void get_class_property();
