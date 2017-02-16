@@ -1285,30 +1285,6 @@ void LiberaEventReceiverClass::attribute_factory(vector<Tango::Attr *> &att_list
 	//	Not Memorized
 	att_list.push_back(plllock);
 
-	//	Attribute : Temp3
-	Temp3Attrib	*temp3 = new Temp3Attrib();
-	Tango::UserDefaultAttrProp	temp3_prop;
-	temp3_prop.set_description("Temperature of the hottest component on the timing \nmodule is returned.");
-	temp3_prop.set_label("Evrx Temperature");
-	temp3_prop.set_unit("deg.C");
-	//	standard_unit	not set for Temp3
-	//	display_unit	not set for Temp3
-	temp3_prop.set_format("%8d");
-	//	max_value	not set for Temp3
-	//	min_value	not set for Temp3
-	temp3_prop.set_max_alarm("75");
-	temp3_prop.set_min_alarm("5");
-	temp3_prop.set_max_warning("72");
-	temp3_prop.set_min_warning("10");
-	//	delta_t	not set for Temp3
-	//	delta_val	not set for Temp3
-	
-	temp3->set_default_properties(temp3_prop);
-	//	Not Polled
-	temp3->set_disp_level(Tango::OPERATOR);
-	//	Not Memorized
-	att_list.push_back(temp3);
-
 	//	Attribute : T0Delay
 	T0DelayAttrib	*t0delay = new T0DelayAttrib();
 	Tango::UserDefaultAttrProp	t0delay_prop;

@@ -76,7 +76,6 @@ static const char *RcsId = "$Id:  $";
 //  OffsetTune             |  Tango::DevLong	Scalar
 //  CompensateTune         |  Tango::DevBoolean	Scalar
 //  PLLLock                |  Tango::DevBoolean	Scalar
-//  Temp3                  |  Tango::DevShort	Scalar
 //  T0Delay                |  Tango::DevLong	Scalar
 //  RtcDecoderSwitch       |  Tango::DevShort	Scalar
 //  McSource               |  Tango::DevShort	Scalar
@@ -260,8 +259,8 @@ void LiberaEventReceiver::init_device()
     //TODO
     //TEST
 
-    m_libera->AddScalarPM("boards.evrx2.sensors.ID_6.value",
-        attr_Temp3_read, LiberaAttr::DBL2SHORT);
+    //m_libera->AddScalarPM("boards.evrx2.sensors.ID_6.value",
+    //    attr_Temp3_read, LiberaAttr::DBL2SHORT);
     //m_libera->AddScalar("",attr_Temp3_read);
     //*attr_Temp3_read = 60;
     //m_libera->AddScalarPM("fans.left_", attr_Fan1Speed_read, LiberaAttr::FAN2SHORT);
@@ -1099,25 +1098,6 @@ void LiberaEventReceiver::read_PLLLock(Tango::Attribute &attr)
 	attr.set_value(attr_PLLLock_read);
 	
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_PLLLock
-}
-//--------------------------------------------------------
-/**
- *	Read attribute Temp3 related method
- *	Description: Temperature of the hottest component on the timing 
- *               module is returned.
- *
- *	Data type:	Tango::DevShort
- *	Attr type:	Scalar
- */
-//--------------------------------------------------------
-void LiberaEventReceiver::read_Temp3(Tango::Attribute &attr)
-{
-	DEBUG_STREAM << "LiberaEventReceiver::read_Temp3(Tango::Attribute &attr) entering... " << endl;
-	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_Temp3) ENABLED START -----*/
-	//	Set the attribute value
-	attr.set_value(attr_Temp3_read);
-	
-	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_Temp3
 }
 //--------------------------------------------------------
 /**
@@ -3139,6 +3119,24 @@ void LiberaEventReceiver::init_settings()
 // 	DEBUG_STREAM << "LiberaEventReceiver::read_Fan2Speed(Tango::Attribute &attr) entering... " << endl;
 // 	//	Set the attribute value
 // 	attr.set_value(attr_Fan2Speed_read);
+// 	
+// }
+
+// //--------------------------------------------------------
+// /**
+//  *	Read attribute Temp3 related method
+//  *	Description: Temperature of the hottest component on the timing 
+//  *               module is returned.
+//  *
+//  *	Data type:	Tango::DevShort
+//  *	Attr type:	Scalar
+//  */
+// //--------------------------------------------------------
+// void LiberaEventReceiver::read_Temp3(Tango::Attribute &attr)
+// {
+// 	DEBUG_STREAM << "LiberaEventReceiver::read_Temp3(Tango::Attribute &attr) entering... " << endl;
+// 	//	Set the attribute value
+// 	attr.set_value(attr_Temp3_read);
 // 	
 // }
 

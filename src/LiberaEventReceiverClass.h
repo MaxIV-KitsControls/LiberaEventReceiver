@@ -115,19 +115,6 @@ public:
 		{return (static_cast<LiberaEventReceiver *>(dev))->is_PLLLock_allowed(ty);}
 };
 
-//	Attribute Temp3 class definition
-class Temp3Attrib: public Tango::Attr
-{
-public:
-	Temp3Attrib():Attr("Temp3",
-			Tango::DEV_SHORT, Tango::READ) {};
-	~Temp3Attrib() {};
-	virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
-		{(static_cast<LiberaEventReceiver *>(dev))->read_Temp3(att);}
-	virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
-		{return (static_cast<LiberaEventReceiver *>(dev))->is_Temp3_allowed(ty);}
-};
-
 //	Attribute T0Delay class definition
 class T0DelayAttrib: public Tango::Attr
 {

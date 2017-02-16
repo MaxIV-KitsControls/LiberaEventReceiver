@@ -179,7 +179,6 @@ public:
 	Tango::DevLong	*attr_OffsetTune_read;
 	Tango::DevBoolean	*attr_CompensateTune_read;
 	Tango::DevBoolean	*attr_PLLLock_read;
-	Tango::DevShort	*attr_Temp3_read;
 	Tango::DevLong	*attr_T0Delay_read;
 	Tango::DevShort	*attr_RtcDecoderSwitch_read;
 	Tango::DevShort	*attr_McSource_read;
@@ -332,16 +331,6 @@ public:
  */
 	virtual void read_PLLLock(Tango::Attribute &attr);
 	virtual bool is_PLLLock_allowed(Tango::AttReqType type);
-/**
- *	Attribute Temp3 related methods
- *	Description: Temperature of the hottest component on the timing 
- *               module is returned.
- *
- *	Data type:	Tango::DevShort
- *	Attr type:	Scalar
- */
-	virtual void read_Temp3(Tango::Attribute &attr);
-	virtual bool is_Temp3_allowed(Tango::AttReqType type);
 /**
  *	Attribute T0Delay related methods
  *	Description: Delay before transmission starts, set in cycles at fSFP

@@ -127,22 +127,6 @@ bool LiberaEventReceiver::is_PLLLock_allowed(TANGO_UNUSED(Tango::AttReqType type
 
 //--------------------------------------------------------
 /**
- *	Method      : LiberaEventReceiver::is_Temp3_allowed()
- *	Description : Execution allowed for Temp3 attribute
- */
-//--------------------------------------------------------
-bool LiberaEventReceiver::is_Temp3_allowed(TANGO_UNUSED(Tango::AttReqType type))
-{
-
-	//	Not any excluded states for Temp3 attribute in read access.
-	/*----- PROTECTED REGION ID(LiberaEventReceiver::Temp3StateAllowed_READ) ENABLED START -----*/
-	
-	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::Temp3StateAllowed_READ
-	return true;
-}
-
-//--------------------------------------------------------
-/**
  *	Method      : LiberaEventReceiver::is_T0Delay_allowed()
  *	Description : Execution allowed for T0Delay attribute
  */
