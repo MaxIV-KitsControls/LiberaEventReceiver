@@ -1,5 +1,5 @@
 Source: tangods-liberaeventreceiver
-Standards-Version: 2.1.0
+Standards-Version: 2.2.0
 Section: utils
 Maintainer: MAXIV Laboratory <kits@maxlab.lu.se>, Cosylab d.o.o. <info@cosylab.com>
 Homepage: https://github.com/MaxIV-KitsControls/Libera-BrilliancePlus
@@ -10,7 +10,7 @@ Build-Depends: debhelper (>= 7.0.0),
                libtango8-dev,
                libera-base2.9-dev,
                libera-mci2.9-dev,
-               libliberatango
+               libliberatango-dev (>= 2.1.0)
 
 Package: tangods-liberaeventreceiver
 Architecture: i386
