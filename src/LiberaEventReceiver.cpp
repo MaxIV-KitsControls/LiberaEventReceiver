@@ -13,20 +13,20 @@ static const char *RcsId = "$Id:  $";
 // project :     Libera BPM Device Server
 //
 // This file is part of Tango device class.
-// 
+//
 // Tango is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // Tango is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with Tango.  If not, see <http://www.gnu.org/licenses/>.
-// 
+//
 // $Author:  $
 //
 // $Revision:  $
@@ -144,7 +144,7 @@ LiberaEventReceiver::LiberaEventReceiver(Tango::DeviceClass *cl, string &s)
 {
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::constructor_1) ENABLED START -----*/
 	init_device();
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::constructor_1
 }
 //--------------------------------------------------------
@@ -153,7 +153,7 @@ LiberaEventReceiver::LiberaEventReceiver(Tango::DeviceClass *cl, const char *s)
 {
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::constructor_2) ENABLED START -----*/
 	init_device();
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::constructor_2
 }
 //--------------------------------------------------------
@@ -162,7 +162,7 @@ LiberaEventReceiver::LiberaEventReceiver(Tango::DeviceClass *cl, const char *s, 
 {
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::constructor_3) ENABLED START -----*/
 	init_device();
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::constructor_3
 }
 
@@ -196,15 +196,15 @@ void LiberaEventReceiver::init_device()
 {
 	DEBUG_STREAM << "LiberaEventReceiver::init_device() create device " << device_name << endl;
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::init_device_before) ENABLED START -----*/
-	
+
 	//	Initialization before get_device_property() call
     m_libera = NULL;
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::init_device_before
-	
+
 
 	//	Get the device properties from database
 	get_device_property();
-	
+
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::init_device) ENABLED START -----*/
 
 	//Set Trace Level Options //TODO refactor.
@@ -411,7 +411,7 @@ void LiberaEventReceiver::init_device()
 void LiberaEventReceiver::get_device_property()
 {
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::get_device_property_before) ENABLED START -----*/
-	
+
 	//	Initialize property data members
     DEBUG_STREAM << "LiberaEventReceiver::get_device_property() get device properties " << device_name << endl;
 
@@ -468,7 +468,7 @@ void LiberaEventReceiver::get_device_property()
 		//	Call database and extract values
 		if (Tango::Util::instance()->_UseDb==true)
 			get_db_device()->get_property(dev_prop);
-	
+
 		//	get instance on LiberaEventReceiverClass to get class property
 		Tango::DbDatum	def_prop, cl_prop;
 		LiberaEventReceiverClass	*ds_class =
@@ -929,9 +929,9 @@ void LiberaEventReceiver::get_device_property()
 	}
 
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::get_device_property_after) ENABLED START -----*/
-	
+
 	//	Check device property data members init
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::get_device_property_after
 }
 
@@ -960,9 +960,9 @@ void LiberaEventReceiver::read_attr_hardware(TANGO_UNUSED(vector<long> &attr_lis
 {
 	DEBUG_STREAM << "LiberaEventReceiver::read_attr_hardware(vector<long> &attr_list) entering... " << endl;
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_attr_hardware) ENABLED START -----*/
-	
+
 	//	Add your own code
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_attr_hardware
 }
 //--------------------------------------------------------
@@ -975,9 +975,9 @@ void LiberaEventReceiver::write_attr_hardware(TANGO_UNUSED(vector<long> &attr_li
 {
 	DEBUG_STREAM << "LiberaEventReceiver::write_attr_hardware(vector<long> &attr_list) entering... " << endl;
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_attr_hardware) ENABLED START -----*/
-	
+
 	//	Add your own code
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_attr_hardware
 }
 
@@ -996,13 +996,13 @@ void LiberaEventReceiver::read_PMNotificationCounter(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_PMNotificationCounter) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_PMNotificationCounter_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_PMNotificationCounter
 }
 //--------------------------------------------------------
 /**
  *	Read attribute OffsetTune related method
- *	Description: Sets the offset tune value, 1 unit is approximately 40 Hz. 
+ *	Description: Sets the offset tune value, 1 unit is approximately 40 Hz.
  *               Default value is 0 (precisely tuned).
  *
  *	Data type:	Tango::DevLong
@@ -1015,13 +1015,13 @@ void LiberaEventReceiver::read_OffsetTune(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_OffsetTune) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_OffsetTune_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_OffsetTune
 }
 //--------------------------------------------------------
 /**
  *	Write attribute OffsetTune related method
- *	Description: Sets the offset tune value, 1 unit is approximately 40 Hz. 
+ *	Description: Sets the offset tune value, 1 unit is approximately 40 Hz.
  *               Default value is 0 (precisely tuned).
  *
  *	Data type:	Tango::DevLong
@@ -1043,7 +1043,7 @@ void LiberaEventReceiver::write_OffsetTune(Tango::WAttribute &attr)
 //--------------------------------------------------------
 /**
  *	Read attribute CompensateTune related method
- *	Description: To enable double offset-tune, issue the following command 
+ *	Description: To enable double offset-tune, issue the following command
  *               (to disable it, just use false instead of true).
  *
  *	Data type:	Tango::DevBoolean
@@ -1056,13 +1056,13 @@ void LiberaEventReceiver::read_CompensateTune(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_CompensateTune) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_CompensateTune_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_CompensateTune
 }
 //--------------------------------------------------------
 /**
  *	Write attribute CompensateTune related method
- *	Description: To enable double offset-tune, issue the following command 
+ *	Description: To enable double offset-tune, issue the following command
  *               (to disable it, just use false instead of true).
  *
  *	Data type:	Tango::DevBoolean
@@ -1096,7 +1096,7 @@ void LiberaEventReceiver::read_PLLLock(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_PLLLock) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_PLLLock_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_PLLLock
 }
 //--------------------------------------------------------
@@ -1114,7 +1114,7 @@ void LiberaEventReceiver::read_T0Delay(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T0Delay) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T0Delay_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T0Delay
 }
 //--------------------------------------------------------
@@ -1133,7 +1133,7 @@ void LiberaEventReceiver::write_T0Delay(Tango::WAttribute &attr)
 	Tango::DevLong	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T0Delay) ENABLED START -----*/
-	
+
 	m_libera->UpdateScalar(attr_T0Delay_read, w_val);
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T0Delay
 }
@@ -1152,7 +1152,7 @@ void LiberaEventReceiver::read_RtcDecoderSwitch(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_RtcDecoderSwitch) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_RtcDecoderSwitch_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_RtcDecoderSwitch
 }
 //--------------------------------------------------------
@@ -1190,7 +1190,7 @@ void LiberaEventReceiver::read_McSource(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_McSource) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_McSource_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_McSource
 }
 //--------------------------------------------------------
@@ -1210,7 +1210,7 @@ void LiberaEventReceiver::write_McSource(Tango::WAttribute &attr)
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_McSource) ENABLED START -----*/
 	m_libera->UpdateScalar(attr_McSource_read, w_val);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_McSource
 }
 //--------------------------------------------------------
@@ -1228,7 +1228,7 @@ void LiberaEventReceiver::read_T0Direction(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T0Direction) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T0Direction_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T0Direction
 }
 //--------------------------------------------------------
@@ -1247,7 +1247,7 @@ void LiberaEventReceiver::write_T0Direction(Tango::WAttribute &attr)
 	Tango::DevShort	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T0Direction) ENABLED START -----*/
-	
+
 	m_libera->UpdateScalar(attr_T0Direction_read, w_val);
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T0Direction
 }
@@ -1266,7 +1266,7 @@ void LiberaEventReceiver::read_T0OutputType(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T0OutputType) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T0OutputType_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T0OutputType
 }
 //--------------------------------------------------------
@@ -1286,7 +1286,7 @@ void LiberaEventReceiver::write_T0OutputType(Tango::WAttribute &attr)
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T0OutputType) ENABLED START -----*/
 	m_libera->UpdateScalar(attr_T0OutputType_read, w_val);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T0OutputType
 }
 //--------------------------------------------------------
@@ -1304,7 +1304,7 @@ void LiberaEventReceiver::read_T0State(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T0State) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T0State_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T0State
 }
 //--------------------------------------------------------
@@ -1323,7 +1323,7 @@ void LiberaEventReceiver::write_T0State(Tango::WAttribute &attr)
 	Tango::DevShort	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T0State) ENABLED START -----*/
-	
+
 	m_libera->UpdateScalar(attr_T0State_read, w_val);
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T0State
 }
@@ -1342,7 +1342,7 @@ void LiberaEventReceiver::read_T1Source(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T1Source) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T1Source_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T1Source
 }
 //--------------------------------------------------------
@@ -1361,8 +1361,8 @@ void LiberaEventReceiver::write_T1Source(Tango::WAttribute &attr)
 	Tango::DevShort	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T1Source) ENABLED START -----*/
-	
-	
+
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T1Source
 }
 //--------------------------------------------------------
@@ -1380,7 +1380,7 @@ void LiberaEventReceiver::read_T2Source(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T2Source) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T2Source_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T2Source
 }
 //--------------------------------------------------------
@@ -1400,7 +1400,7 @@ void LiberaEventReceiver::write_T2Source(Tango::WAttribute &attr)
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T2Source) ENABLED START -----*/
 	//m_libera->UpdateScalar(attr_T2Source_read, w_val);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T2Source
 }
 //--------------------------------------------------------
@@ -1418,7 +1418,7 @@ void LiberaEventReceiver::read_MgtOut(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_MgtOut) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_MgtOut_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_MgtOut
 }
 //--------------------------------------------------------
@@ -1437,8 +1437,8 @@ void LiberaEventReceiver::write_MgtOut(Tango::WAttribute &attr)
 	Tango::DevShort	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_MgtOut) ENABLED START -----*/
-	
-	
+
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_MgtOut
 }
 //--------------------------------------------------------
@@ -1456,7 +1456,7 @@ void LiberaEventReceiver::read_T0inMask(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T0inMask) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T0inMask_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T0inMask
 }
 //--------------------------------------------------------
@@ -1476,7 +1476,7 @@ void LiberaEventReceiver::write_T0inMask(Tango::WAttribute &attr)
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T0inMask) ENABLED START -----*/
 	m_libera->UpdateScalar(attr_T0inMask_read, w_val);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T0inMask
 }
 //--------------------------------------------------------
@@ -1494,7 +1494,7 @@ void LiberaEventReceiver::read_T1inMask(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T1inMask) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T1inMask_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T1inMask
 }
 //--------------------------------------------------------
@@ -1514,7 +1514,7 @@ void LiberaEventReceiver::write_T1inMask(Tango::WAttribute &attr)
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T1inMask) ENABLED START -----*/
 	m_libera->UpdateScalar(attr_T1inMask_read, w_val);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T1inMask
 }
 //--------------------------------------------------------
@@ -1532,7 +1532,7 @@ void LiberaEventReceiver::read_T2inMask(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T2inMask) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T2inMask_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T2inMask
 }
 //--------------------------------------------------------
@@ -1551,7 +1551,7 @@ void LiberaEventReceiver::write_T2inMask(Tango::WAttribute &attr)
 	Tango::DevLong	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T2inMask) ENABLED START -----*/
-	
+
 	m_libera->UpdateScalar(attr_T2inMask_read, w_val);
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T2inMask
 }
@@ -1570,7 +1570,7 @@ void LiberaEventReceiver::read_T0idOutput(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T0idOutput) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T0idOutput_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T0idOutput
 }
 //--------------------------------------------------------
@@ -1590,7 +1590,7 @@ void LiberaEventReceiver::write_T0idOutput(Tango::WAttribute &attr)
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T0idOutput) ENABLED START -----*/
 	m_libera->UpdateScalar(attr_T0idOutput_read, w_val);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T0idOutput
 }
 //--------------------------------------------------------
@@ -1608,7 +1608,7 @@ void LiberaEventReceiver::read_T1inFunction(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T1inFunction) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T1inFunction_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T1inFunction
 }
 //--------------------------------------------------------
@@ -1627,7 +1627,7 @@ void LiberaEventReceiver::write_T1inFunction(Tango::WAttribute &attr)
 	Tango::DevLong	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T1inFunction) ENABLED START -----*/
-	
+
 	m_libera->UpdateScalar(attr_T1inFunction_read, w_val);
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T1inFunction
 }
@@ -1646,7 +1646,7 @@ void LiberaEventReceiver::read_T2inFunction(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T2inFunction) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T2inFunction_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T2inFunction
 }
 //--------------------------------------------------------
@@ -1670,8 +1670,8 @@ void LiberaEventReceiver::write_T2inFunction(Tango::WAttribute &attr)
         //std::vector<uint32_t> value = std::vector<uint32_t>();
         //value.push_back(109);
         //m_libera->m_root.GetNode(mci::Tokenize("boards."+c_timingBoard+".rtc.t2.in_function")).SetValue(value);
-	
-	
+
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T2inFunction
 }
 //--------------------------------------------------------
@@ -1689,7 +1689,7 @@ void LiberaEventReceiver::read_MCinMask(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_MCinMask) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_MCinMask_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_MCinMask
 }
 //--------------------------------------------------------
@@ -1708,8 +1708,8 @@ void LiberaEventReceiver::write_MCinMask(Tango::WAttribute &attr)
 	Tango::DevLong	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_MCinMask) ENABLED START -----*/
-	
-	
+
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_MCinMask
 }
 //--------------------------------------------------------
@@ -1727,7 +1727,7 @@ void LiberaEventReceiver::read_MCinFunction(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_MCinFunction) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_MCinFunction_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_MCinFunction
 }
 //--------------------------------------------------------
@@ -1746,8 +1746,8 @@ void LiberaEventReceiver::write_MCinFunction(Tango::WAttribute &attr)
 	Tango::DevLong	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_MCinFunction) ENABLED START -----*/
-	
-	
+
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_MCinFunction
 }
 //--------------------------------------------------------
@@ -1765,7 +1765,7 @@ void LiberaEventReceiver::read_T0Duration(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T0Duration) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T0Duration_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T0Duration
 }
 //--------------------------------------------------------
@@ -1785,7 +1785,7 @@ void LiberaEventReceiver::write_T0Duration(Tango::WAttribute &attr)
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T0Duration) ENABLED START -----*/
 	m_libera->UpdateScalar(attr_T0Duration_read, w_val);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T0Duration
 }
 //--------------------------------------------------------
@@ -1803,7 +1803,7 @@ void LiberaEventReceiver::read_InterlockID(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_InterlockID) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_InterlockID_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_InterlockID
 }
 //--------------------------------------------------------
@@ -1822,14 +1822,14 @@ void LiberaEventReceiver::write_InterlockID(Tango::WAttribute &attr)
 	Tango::DevLong	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_InterlockID) ENABLED START -----*/
-	
-	
+
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_InterlockID
 }
 //--------------------------------------------------------
 /**
  *	Read attribute T2EdgeFalling related method
- *	Description: 
+ *	Description:
  *
  *	Data type:	Tango::DevBoolean
  *	Attr type:	Scalar
@@ -1841,13 +1841,13 @@ void LiberaEventReceiver::read_T2EdgeFalling(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T2EdgeFalling) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T2EdgeFalling_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T2EdgeFalling
 }
 //--------------------------------------------------------
 /**
  *	Write attribute T2EdgeFalling related method
- *	Description: 
+ *	Description:
  *
  *	Data type:	Tango::DevBoolean
  *	Attr type:	Scalar
@@ -1860,14 +1860,14 @@ void LiberaEventReceiver::write_T2EdgeFalling(Tango::WAttribute &attr)
 	Tango::DevBoolean	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T2EdgeFalling) ENABLED START -----*/
-	
-	
+
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T2EdgeFalling
 }
 //--------------------------------------------------------
 /**
  *	Read attribute T2EdgeRising related method
- *	Description: 
+ *	Description:
  *
  *	Data type:	Tango::DevBoolean
  *	Attr type:	Scalar
@@ -1879,13 +1879,13 @@ void LiberaEventReceiver::read_T2EdgeRising(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T2EdgeRising) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T2EdgeRising_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T2EdgeRising
 }
 //--------------------------------------------------------
 /**
  *	Write attribute T2EdgeRising related method
- *	Description: 
+ *	Description:
  *
  *	Data type:	Tango::DevBoolean
  *	Attr type:	Scalar
@@ -1898,14 +1898,14 @@ void LiberaEventReceiver::write_T2EdgeRising(Tango::WAttribute &attr)
 	Tango::DevBoolean	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T2EdgeRising) ENABLED START -----*/
-	
-	
+
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T2EdgeRising
 }
 //--------------------------------------------------------
 /**
  *	Read attribute T1EdgeFalling related method
- *	Description: 
+ *	Description:
  *
  *	Data type:	Tango::DevBoolean
  *	Attr type:	Scalar
@@ -1917,13 +1917,13 @@ void LiberaEventReceiver::read_T1EdgeFalling(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T1EdgeFalling) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T1EdgeFalling_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T1EdgeFalling
 }
 //--------------------------------------------------------
 /**
  *	Write attribute T1EdgeFalling related method
- *	Description: 
+ *	Description:
  *
  *	Data type:	Tango::DevBoolean
  *	Attr type:	Scalar
@@ -1936,14 +1936,14 @@ void LiberaEventReceiver::write_T1EdgeFalling(Tango::WAttribute &attr)
 	Tango::DevBoolean	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T1EdgeFalling) ENABLED START -----*/
-	
-	
+
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T1EdgeFalling
 }
 //--------------------------------------------------------
 /**
  *	Read attribute T1EdgeRising related method
- *	Description: 
+ *	Description:
  *
  *	Data type:	Tango::DevBoolean
  *	Attr type:	Scalar
@@ -1955,13 +1955,13 @@ void LiberaEventReceiver::read_T1EdgeRising(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T1EdgeRising) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T1EdgeRising_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T1EdgeRising
 }
 //--------------------------------------------------------
 /**
  *	Write attribute T1EdgeRising related method
- *	Description: 
+ *	Description:
  *
  *	Data type:	Tango::DevBoolean
  *	Attr type:	Scalar
@@ -1974,8 +1974,8 @@ void LiberaEventReceiver::write_T1EdgeRising(Tango::WAttribute &attr)
 	Tango::DevBoolean	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T1EdgeRising) ENABLED START -----*/
-	
-	
+
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T1EdgeRising
 }
 //--------------------------------------------------------
@@ -1993,7 +1993,7 @@ void LiberaEventReceiver::read_T2IdInput(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T2IdInput) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T2IdInput_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T2IdInput
 }
 //--------------------------------------------------------
@@ -2012,8 +2012,8 @@ void LiberaEventReceiver::write_T2IdInput(Tango::WAttribute &attr)
 	Tango::DevLong	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T2IdInput) ENABLED START -----*/
-	
-	
+
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T2IdInput
 }
 //--------------------------------------------------------
@@ -2031,7 +2031,7 @@ void LiberaEventReceiver::read_T1IdInput(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T1IdInput) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T1IdInput_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T1IdInput
 }
 //--------------------------------------------------------
@@ -2050,8 +2050,8 @@ void LiberaEventReceiver::write_T1IdInput(Tango::WAttribute &attr)
 	Tango::DevLong	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T1IdInput) ENABLED START -----*/
-	
-	
+
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T1IdInput
 }
 //--------------------------------------------------------
@@ -2069,7 +2069,7 @@ void LiberaEventReceiver::read_T1Direction(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T1Direction) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T1Direction_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T1Direction
 }
 //--------------------------------------------------------
@@ -2088,8 +2088,8 @@ void LiberaEventReceiver::write_T1Direction(Tango::WAttribute &attr)
 	Tango::DevShort	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T1Direction) ENABLED START -----*/
-	
-	
+
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T1Direction
 }
 //--------------------------------------------------------
@@ -2107,7 +2107,7 @@ void LiberaEventReceiver::read_T2Direction(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T2Direction) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T2Direction_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T2Direction
 }
 //--------------------------------------------------------
@@ -2126,8 +2126,8 @@ void LiberaEventReceiver::write_T2Direction(Tango::WAttribute &attr)
 	Tango::DevShort	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T2Direction) ENABLED START -----*/
-	
-	
+
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T2Direction
 }
 //--------------------------------------------------------
@@ -2145,7 +2145,7 @@ void LiberaEventReceiver::read_SynchronizeLMT(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_SynchronizeLMT) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_SynchronizeLMT_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_SynchronizeLMT
 }
 //--------------------------------------------------------
@@ -2165,7 +2165,7 @@ void LiberaEventReceiver::write_SynchronizeLMT(Tango::WAttribute &attr)
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_SynchronizeLMT) ENABLED START -----*/
 	m_libera->UpdateScalar(attr_SynchronizeLMT_read, w_val);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_SynchronizeLMT
 }
 //--------------------------------------------------------
@@ -2183,7 +2183,7 @@ void LiberaEventReceiver::read_RTCTimestamp(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_RTCTimestamp) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_RTCTimestamp_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_RTCTimestamp
 }
 //--------------------------------------------------------
@@ -2201,7 +2201,7 @@ void LiberaEventReceiver::read_RTCTimestampState(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_RTCTimestampState) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_RTCTimestampState_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_RTCTimestampState
 }
 //--------------------------------------------------------
@@ -2219,7 +2219,7 @@ void LiberaEventReceiver::read_T1State(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T1State) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T1State_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T1State
 }
 //--------------------------------------------------------
@@ -2238,7 +2238,7 @@ void LiberaEventReceiver::write_T1State(Tango::WAttribute &attr)
 	Tango::DevShort	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T1State) ENABLED START -----*/
-	
+
 	m_libera->UpdateScalar(attr_T1State_read, w_val);
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T1State
 }
@@ -2257,7 +2257,7 @@ void LiberaEventReceiver::read_T2State(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T2State) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T2State_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T2State
 }
 //--------------------------------------------------------
@@ -2276,7 +2276,7 @@ void LiberaEventReceiver::write_T2State(Tango::WAttribute &attr)
 	Tango::DevShort	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T2State) ENABLED START -----*/
-	
+
 	m_libera->UpdateScalar(attr_T2State_read, w_val);
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T2State
 }
@@ -2295,7 +2295,7 @@ void LiberaEventReceiver::read_T1Duration(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T1Duration) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T1Duration_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T1Duration
 }
 //--------------------------------------------------------
@@ -2315,7 +2315,7 @@ void LiberaEventReceiver::write_T1Duration(Tango::WAttribute &attr)
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T1Duration) ENABLED START -----*/
 	m_libera->UpdateScalar(attr_T1Duration_read, w_val);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T1Duration
 }
 //--------------------------------------------------------
@@ -2333,7 +2333,7 @@ void LiberaEventReceiver::read_T1idOutput(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T1idOutput) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T1idOutput_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T1idOutput
 }
 //--------------------------------------------------------
@@ -2353,7 +2353,7 @@ void LiberaEventReceiver::write_T1idOutput(Tango::WAttribute &attr)
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T1idOutput) ENABLED START -----*/
 	m_libera->UpdateScalar(attr_T1idOutput_read, w_val);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T1idOutput
 }
 //--------------------------------------------------------
@@ -2371,7 +2371,7 @@ void LiberaEventReceiver::read_T2idOutput(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T2idOutput) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T2idOutput_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T2idOutput
 }
 //--------------------------------------------------------
@@ -2390,7 +2390,7 @@ void LiberaEventReceiver::write_T2idOutput(Tango::WAttribute &attr)
 	Tango::DevLong	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T2idOutput) ENABLED START -----*/
-	
+
 	m_libera->UpdateScalar(attr_T2idOutput_read, w_val);
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T2idOutput
 }
@@ -2409,7 +2409,7 @@ void LiberaEventReceiver::read_T0IdInput(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T0IdInput) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T0IdInput_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T0IdInput
 }
 //--------------------------------------------------------
@@ -2429,7 +2429,7 @@ void LiberaEventReceiver::write_T0IdInput(Tango::WAttribute &attr)
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T0IdInput) ENABLED START -----*/
 	m_libera->UpdateScalar(attr_T0IdInput_read, w_val);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T0IdInput
 }
 //--------------------------------------------------------
@@ -2447,7 +2447,7 @@ void LiberaEventReceiver::read_T2Duration(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_T2Duration) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_T2Duration_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_T2Duration
 }
 //--------------------------------------------------------
@@ -2467,7 +2467,7 @@ void LiberaEventReceiver::write_T2Duration(Tango::WAttribute &attr)
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T2Duration) ENABLED START -----*/
 	m_libera->UpdateScalar(attr_T2Duration_read, w_val);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T2Duration
 }
 //--------------------------------------------------------
@@ -2485,7 +2485,7 @@ void LiberaEventReceiver::read_RtcT1inMask(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_RtcT1inMask) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_RtcT1inMask_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_RtcT1inMask
 }
 //--------------------------------------------------------
@@ -2504,7 +2504,7 @@ void LiberaEventReceiver::write_RtcT1inMask(Tango::WAttribute &attr)
 	Tango::DevLong	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_RtcT1inMask) ENABLED START -----*/
-	
+
 	m_libera->UpdateScalar(attr_RtcT1inMask_read, w_val);
 
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_RtcT1inMask
@@ -2524,7 +2524,7 @@ void LiberaEventReceiver::read_RtcT2inMask(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_RtcT2inMask) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_RtcT2inMask_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_RtcT2inMask
 }
 //--------------------------------------------------------
@@ -2544,7 +2544,7 @@ void LiberaEventReceiver::write_RtcT2inMask(Tango::WAttribute &attr)
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_RtcT2inMask) ENABLED START -----*/
 	m_libera->UpdateScalar(attr_RtcT2inMask_read, w_val);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_RtcT2inMask
 }
 //--------------------------------------------------------
@@ -2562,7 +2562,7 @@ void LiberaEventReceiver::read_DDTriggerCounter(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_DDTriggerCounter) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_DDTriggerCounter_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_DDTriggerCounter
 }
 //--------------------------------------------------------
@@ -2580,7 +2580,7 @@ void LiberaEventReceiver::read_MCLock(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_MCLock) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_MCLock_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_MCLock
 }
 //--------------------------------------------------------
@@ -2598,7 +2598,7 @@ void LiberaEventReceiver::read_PLLClockGood(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_PLLClockGood) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_PLLClockGood_read);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_PLLClockGood
 }
 //--------------------------------------------------------
@@ -2616,13 +2616,13 @@ void LiberaEventReceiver::read_UserData(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_UserData) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_UserData_read, 256);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_UserData
 }
 //--------------------------------------------------------
 /**
  *	Read attribute logs related method
- *	Description: 
+ *	Description:
  *
  *	Data type:	Tango::DevString
  *	Attr type:	Spectrum max = 2048
@@ -2634,7 +2634,7 @@ void LiberaEventReceiver::read_logs(Tango::Attribute &attr)
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::read_logs) ENABLED START -----*/
 	//	Set the attribute value
 	attr.set_value(attr_logs_read, 2048);
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::read_logs
 }
 
@@ -2648,9 +2648,9 @@ void LiberaEventReceiver::read_logs(Tango::Attribute &attr)
 void LiberaEventReceiver::add_dynamic_attributes()
 {
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::add_dynamic_attributes) ENABLED START -----*/
-	
+
 	//	Add your own code to create and add dynamic attributes if any
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::add_dynamic_attributes
 }
 
@@ -2744,7 +2744,7 @@ Tango::DevVarDoubleStringArray *LiberaEventReceiver::get_parameters()
 	Tango::DevVarDoubleStringArray *argout;
 	DEBUG_STREAM << "LiberaEventReceiver::GetParameters()  - " << device_name << endl;
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::get_parameters) ENABLED START -----*/
-	
+
 	//	Add your own code
     argout = new Tango::DevVarDoubleStringArray();
     argout->dvalue.length(0);
@@ -2756,7 +2756,7 @@ Tango::DevVarDoubleStringArray *LiberaEventReceiver::get_parameters()
 //--------------------------------------------------------
 /**
  *	Command ReloadSystemProperties related method
- *	Description: 
+ *	Description:
  *
  */
 //--------------------------------------------------------
@@ -2764,9 +2764,9 @@ void LiberaEventReceiver::reload_system_properties()
 {
 	DEBUG_STREAM << "LiberaEventReceiver::ReloadSystemProperties()  - " << device_name << endl;
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::reload_system_properties) ENABLED START -----*/
-	
+
 	//	Add your own code
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::reload_system_properties
 }
 //--------------------------------------------------------
@@ -2783,7 +2783,7 @@ Tango::DevVarStringArray *LiberaEventReceiver::magic_command(Tango::DevString ar
 	Tango::DevVarStringArray *argout;
 	DEBUG_STREAM << "LiberaEventReceiver::MagicCommand()  - " << device_name << endl;
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::magic_command) ENABLED START -----*/
-	
+
 	//	Add your own code
 
     argout = new Tango::DevVarStringArray(1);
@@ -2811,10 +2811,10 @@ void LiberaEventReceiver::announce_synchronization()
 	DEBUG_STREAM << "LiberaEventReceiver::AnnounceSynchronization()  - " << device_name << endl;
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::announce_synchronization) ENABLED START -----*/
 	if(*attr_PLLLock_read) {
-		m_libera->UpdateScalar(attr_T2inFunction_read, (long)109);
+		m_libera->UpdateScalar(attr_T2inFunction_read, long(109));
                 //delete sync_id;
 		//Announce Synchronization
-		m_libera->UpdateScalar(attr_SynchronizeLMT_read, (long)0);
+		m_libera->UpdateScalar(attr_SynchronizeLMT_read, long(0));
 	}
 	else {
 		ERROR_STREAM << "MC Pll is not locked! Cant Announce Synchronizations." << endl;
@@ -2845,14 +2845,14 @@ void LiberaEventReceiver::force_init_settings()
  *               		High    = 3,
  *               		Detail  = 4
  *
- *	@param argin 
+ *	@param argin
  */
 //--------------------------------------------------------
 void LiberaEventReceiver::set_trace_level(Tango::DevUShort argin)
 {
 	DEBUG_STREAM << "LiberaEventReceiver::SetTraceLevel()  - " << device_name << endl;
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::set_trace_level) ENABLED START -----*/
-	
+
 	//	Add your own code
 	istd::TraceSetLevel(static_cast<istd::TraceLevel_e>(argin));
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::set_trace_level
@@ -2871,7 +2871,7 @@ void LiberaEventReceiver::start_synchronization()
 {
 	DEBUG_STREAM << "LiberaEventReceiver::StartSynchronization()  - " << device_name << endl;
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::start_synchronization) ENABLED START -----*/
-	
+
 	//	Add your own code
 	m_libera->UpdateScalar(attr_T2inFunction_read, t2inFunction);
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::start_synchronization
@@ -2886,9 +2886,9 @@ void LiberaEventReceiver::start_synchronization()
 void LiberaEventReceiver::add_dynamic_commands()
 {
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::add_dynamic_commands) ENABLED START -----*/
-	
+
 	//	Add your own code to create and add dynamic commands if any
-	
+
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::add_dynamic_commands
 }
 
@@ -3061,13 +3061,13 @@ void LiberaEventReceiver::init_settings()
 // 	DEBUG_STREAM << "LiberaEventReceiver::read_LiberaModel(Tango::Attribute &attr) entering... " << endl;
 // 	//	Set the attribute value
 // 	attr.set_value(attr_LiberaModel_read);
-// 	
+//
 // }
 
 // //--------------------------------------------------------
 // /**
 //  *	Read attribute Temp2 related method
-//  *	Description: Temperature of the hottest component on the chassis 
+//  *	Description: Temperature of the hottest component on the chassis
 //  *               interconnection board is returned.
 //  *
 //  *	Data type:	Tango::DevShort
@@ -3079,15 +3079,15 @@ void LiberaEventReceiver::init_settings()
 // 	DEBUG_STREAM << "LiberaEventReceiver::read_Temp2(Tango::Attribute &attr) entering... " << endl;
 // 	//	Set the attribute value
 // 	attr.set_value(attr_Temp2_read);
-// 	
+//
 // }
 
 // //--------------------------------------------------------
 // /**
 //  *	Read attribute Fan1Speed related method
-//  *	Description: Provides minimal fan speed reading of all three fans on 
-//  *               the left side of the chassis in order to identify if the fan 
-//  *               module (consisting of 3 fans) is broken returned value 
+//  *	Description: Provides minimal fan speed reading of all three fans on
+//  *               the left side of the chassis in order to identify if the fan
+//  *               module (consisting of 3 fans) is broken returned value
 //  *               0 means that at least one fan has stopped.
 //  *
 //  *	Data type:	Tango::DevShort
@@ -3099,15 +3099,15 @@ void LiberaEventReceiver::init_settings()
 // 	DEBUG_STREAM << "LiberaEventReceiver::read_Fan1Speed(Tango::Attribute &attr) entering... " << endl;
 // 	//	Set the attribute value
 // 	attr.set_value(attr_Fan1Speed_read);
-// 	
+//
 // }
 
 // //--------------------------------------------------------
 // /**
 //  *	Read attribute Fan2Speed related method
-//  *	Description: Provides minimal fan speed reading of all three fans on 
-//  *               the right side of the chassis in order to identify if the fan 
-//  *               module (consisting of 3 fans) is broken returned value 
+//  *	Description: Provides minimal fan speed reading of all three fans on
+//  *               the right side of the chassis in order to identify if the fan
+//  *               module (consisting of 3 fans) is broken returned value
 //  *               0 means that at least one fan has stopped.
 //  *
 //  *	Data type:	Tango::DevShort
@@ -3119,13 +3119,13 @@ void LiberaEventReceiver::init_settings()
 // 	DEBUG_STREAM << "LiberaEventReceiver::read_Fan2Speed(Tango::Attribute &attr) entering... " << endl;
 // 	//	Set the attribute value
 // 	attr.set_value(attr_Fan2Speed_read);
-// 	
+//
 // }
 
 // //--------------------------------------------------------
 // /**
 //  *	Read attribute Temp3 related method
-//  *	Description: Temperature of the hottest component on the timing 
+//  *	Description: Temperature of the hottest component on the timing
 //  *               module is returned.
 //  *
 //  *	Data type:	Tango::DevShort
@@ -3137,7 +3137,7 @@ void LiberaEventReceiver::init_settings()
 // 	DEBUG_STREAM << "LiberaEventReceiver::read_Temp3(Tango::Attribute &attr) entering... " << endl;
 // 	//	Set the attribute value
 // 	attr.set_value(attr_Temp3_read);
-// 	
+//
 // }
 
 
