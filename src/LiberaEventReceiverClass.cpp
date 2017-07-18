@@ -858,7 +858,7 @@ void LiberaEventReceiverClass::set_default_property()
 	else
 		add_wiz_dev_prop(prop_name, prop_desc);
 	prop_name = "ErrorTrace";
-	prop_desc = "Trace Error functionality for the Libera, by default is Disabled:\n * Value: OutPut ,  TraceLevel\n	* Output[0] :  OutPut on Screen = 0\n	                         OutPut on File = 0 (﻿/var/tmp/ds.log/LiberaMciTrace.log)\n	* TraceLevel[1] : ﻿   Off     = 0,\n        		      Low     = 1,\n		      Med     = 2,\n		      High    = 3,\n		      Detail  = 4";
+	prop_desc = "Trace Error functionality for the Libera, by default is Disabled:\n * Value: OutPut ,  TraceLevel\n	* Output[0] :  OutPut on Screen = 0\n	                         OutPut on File = 0 (?/var/tmp/ds.log/LiberaMciTrace.log)\n	* TraceLevel[1] : ?   Off     = 0,\n        		      Low     = 1,\n		      Med     = 2,\n		      High    = 3,\n		      Detail  = 4";
 	prop_def  = "";
 	vect_data.clear();
 	if (prop_def.length()>0)

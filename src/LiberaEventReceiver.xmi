@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <pogoDsl:PogoSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pogoDsl="http://www.esrf.fr/tango/pogo/PogoDsl">
   <classes name="LiberaEventReceiver" pogoRevision="9.2">
-    <description description="IT Libera BPM Event Receiver Device Server.&#xA;The interface should be the same as for the Brillance model." title="Libera BPM Event Receiver Device Server" sourcePath="/Users/vasmar/Documents/workspace/LiberaEventReceiver/src" language="Cpp" filestogenerate="XMI   file,Code files,Makefile,Protected Regions" license="GPL" hasMandatoryProperty="false" hasConcreteProperty="true" hasAbstractCommand="false" hasAbstractAttribute="false">
+    <description description="IT Libera BPM Event Receiver Device Server.&#xA;The interface should be the same as for the Brillance model." title="Libera BPM Event Receiver Device Server" sourcePath="/Users/jerzy/Dropbox/Git-Main/Libera/LiberaEventReceiver/src" language="Cpp" filestogenerate="XMI   file,Code files,Protected Regions" license="GPL" hasMandatoryProperty="false" hasConcreteProperty="true" hasAbstractCommand="false" hasAbstractAttribute="false">
       <inheritances classname="Device_4Impl" sourcePath=""/>
       <identification contact="at maxlab.lu.se - kitscontrols" author="kitscontrols" emailDomain="maxlab.lu.se" classFamily="BeamDiag" siteSpecific="" platform="Unix Like" bus="Ethernet" manufacturer="I-Tech" reference="Libera Brilliance Plus"/>
     </description>
@@ -565,7 +565,7 @@
       <properties description="Timestamp which is be taken by receiving optical events over SFP when reception is enabled" label="RTC Timestamp" unit="" standardUnit="" displayUnit="" format="" maxValue="" minValue="" maxAlarm="" minAlarm="" maxWarning="" minWarning="" deltaTime="" deltaValue=""/>
     </attributes>
     <attributes name="RTCTimestampState" attType="Scalar" rwType="READ" displayLevel="OPERATOR" polledPeriod="0" maxX="" maxY="" allocReadMember="false" isDynamic="false">
-      <dataType xsi:type="pogoDsl:IntType"/>
+      <dataType xsi:type="pogoDsl:ShortType"/>
       <changeEvent fire="false" libCheckCriteria="false"/>
       <archiveEvent fire="false" libCheckCriteria="false"/>
       <dataReadyEvent fire="false" libCheckCriteria="true"/>
@@ -688,7 +688,7 @@
     <states name="FAULT" description="Device initialization failed or unrecoverable error">
       <status abstract="false" inherited="false" concrete="true" concreteHere="true"/>
     </states>
-    <states name="ON" description="BPM is up and running">
+    <states name="ON" description="Device is up and running">
       <status abstract="false" inherited="false" concrete="true" concreteHere="true"/>
     </states>
     <preferences docHome="./doc_html" makefileHome="$(TANGO_HOME)"/>

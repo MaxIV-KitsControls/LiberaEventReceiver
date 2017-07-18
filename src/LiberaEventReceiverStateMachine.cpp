@@ -44,7 +44,7 @@ static const char *RcsId = "$Id:  $";
 //================================================================
 //  UNKNOWN  |  Device is not [or not properly] initialized
 //  FAULT    |  Device initialization failed or unrecoverable error
-//  ON       |  BPM is up and running
+//  ON       |  Device is up and running
 
 
 namespace LiberaEventReceiver_ns

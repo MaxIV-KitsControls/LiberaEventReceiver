@@ -8,20 +8,20 @@
 // project :     Libera BPM Device Server
 //
 // This file is part of Tango device class.
-// 
+//
 // Tango is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // Tango is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with Tango.  If not, see <http://www.gnu.org/licenses/>.
-// 
+//
 // $Author:  $
 //
 // $Revision:  $
@@ -149,8 +149,8 @@ public:
 	//	ErrorTrace:	Trace Error functionality for the Libera, by default is Disabled:
 	//   * Value: OutPut ,  TraceLevel
 	//  	* Output[0] :  OutPut on Screen = 0
-	//  	                         OutPut on File = 0 (﻿/var/tmp/ds.log/LiberaMciTrace.log)
-	//  	* TraceLevel[1] : ﻿   Off     = 0,
+	//  	                         OutPut on File = 0 (?/var/tmp/ds.log/LiberaMciTrace.log)
+	//  	* TraceLevel[1] : ?   Off     = 0,
 	//          		      Low     = 1,
 	//  		      Med     = 2,
 	//  		      High    = 3,
@@ -208,7 +208,7 @@ public:
 	Tango::DevShort	*attr_T2Direction_read;
 	Tango::DevLong	*attr_SynchronizeLMT_read;
 	Tango::DevLong	*attr_RTCTimestamp_read;
-	Tango::DevLong	*attr_RTCTimestampState_read;
+	Tango::DevShort	*attr_RTCTimestampState_read;
 	Tango::DevShort	*attr_T1State_read;
 	Tango::DevShort	*attr_T2State_read;
 	Tango::DevLong	*attr_T1Duration_read;
@@ -624,7 +624,7 @@ public:
  *	Attribute RTCTimestampState related methods
  *	Description: State of the timestamp which is be taken by receiving optical events over SFP when reception is enabled
  *
- *	Data type:	Tango::DevLong
+ *	Data type:	Tango::DevShort
  *	Attr type:	Scalar
  */
 	virtual void read_RTCTimestampState(Tango::Attribute &attr);

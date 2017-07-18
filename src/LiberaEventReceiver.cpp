@@ -29,7 +29,7 @@ static const char *RcsId = "$Id:  $";
 //
 // $Author:  $
 //
-// $Revision:  $
+// $Revision: $
 // $Date:  $
 //
 // $HeadURL:  $
@@ -105,7 +105,7 @@ static const char *RcsId = "$Id:  $";
 //  T2Direction            |  Tango::DevShort	Scalar
 //  SynchronizeLMT         |  Tango::DevLong	Scalar
 //  RTCTimestamp           |  Tango::DevLong	Scalar
-//  RTCTimestampState      |  Tango::DevLong	Scalar
+//  RTCTimestampState      |  Tango::DevShort	Scalar
 //  T1State                |  Tango::DevShort	Scalar
 //  T2State                |  Tango::DevShort	Scalar
 //  T1Duration             |  Tango::DevLong	Scalar
@@ -241,26 +241,21 @@ void LiberaEventReceiver::init_device()
 
     try
     {
-    //TODO DDTriggerCoiunter
-    m_libera->AddScalar(tim + "events.t2.count",
-        attr_DDTriggerCounter_read, LiberaAttr::ULL2LONG);
-
+    //generic timing diagnostics
+    m_libera->AddScalar(tim + "events.t2.count", attr_DDTriggerCounter_read, LiberaAttr::ULL2LONG);
     m_libera->AddScalar(tim + "pll.vcxo_offset", attr_OffsetTune_read);
     m_libera->AddScalar(tim + "pll.compensate_offset", attr_CompensateTune_read);
+    m_libera->AddScalar("application.synchronize_lmt", attr_SynchronizeLMT_read, LiberaAttr::ULONGLONG2LONG, LiberaAttr::LONG2ULONGLONG);
 
-    m_libera->AddScalar("application.synchronize_lmt",
-    		attr_SynchronizeLMT_read, LiberaAttr::ULONGLONG2LONG, LiberaAttr::LONG2ULONGLONG);
-   // m_libera->AddScalar("",attr_SynchronizeLMT_read);
-
+    // pll and clock attributes
     m_libera->AddScalar(tim + "pll.locked", attr_PLLLock_read);
     m_libera->AddScalar(tim + "clk_mgr.mc.locked", attr_MCLock_read);
     m_libera->AddScalar(tim + "pll.clk_good", attr_PLLClockGood_read);
 
     //TODO
     //TEST
-
-    //m_libera->AddScalarPM("boards.evrx2.sensors.ID_6.value",
-    //    attr_Temp3_read, LiberaAttr::DBL2SHORT);
+    //Platform monitoring parameters removed from the Tango Device
+    //m_libera->AddScalarPM("boards.evrx2.sensors.ID_6.value", attr_Temp3_read, LiberaAttr::DBL2SHORT);
     //m_libera->AddScalar("",attr_Temp3_read);
     //*attr_Temp3_read = 60;
     //m_libera->AddScalarPM("fans.left_", attr_Fan1Speed_read, LiberaAttr::FAN2SHORT);
@@ -270,10 +265,8 @@ void LiberaEventReceiver::init_device()
     m_libera->AddScalar("", attr_UserData_read);
     m_libera->AddLogsRead(attr_logs_read, 2048);
 
-
     //Timing Settings
-    m_libera->AddScalar(tim + "rtc.ts_timestamp",
-    		attr_RTCTimestamp_read, LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
+    m_libera->AddScalar(tim + "rtc.ts_timestamp", attr_RTCTimestamp_read, LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
     m_libera->AddScalar(tim + "rtc.ts_timestamp.state", attr_RTCTimestampState_read);
 
     //MC-CONFIG
@@ -283,100 +276,53 @@ void LiberaEventReceiver::init_device()
     m_libera->AddScalar(tim + "rtc.mc.in_function",attr_MCinFunction_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC); //TODO
 
     //T0-CONFIG
-    m_libera->AddScalar(tim + "connectors.t0.direction",
-    		attr_T0Direction_read, LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT);
-    m_libera->AddScalar(tim + "connectors.t0.out_type",
-    		attr_T0OutputType_read, LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT);
-    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t0.duration",
-    		attr_T0Duration_read, LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
-    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t0.delay",
-    		attr_T0Delay_read, LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
-    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t0.state",
-    		attr_T0State_read, LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT);
-    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t0.in_mask",
-    		attr_T0inMask_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
-    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t0.in_function",
-    		attr_T0idOutput_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
-    m_libera->AddScalar(tim + "rtc.connectors.t0.id", attr_T0IdInput_read,
-        		LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
+    m_libera->AddScalar(tim + "connectors.t0.direction", attr_T0Direction_read, LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT);
+    m_libera->AddScalar(tim + "connectors.t0.out_type", attr_T0OutputType_read, LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT);
+    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t0.duration", attr_T0Duration_read, LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
+    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t0.delay", attr_T0Delay_read, LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
+    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t0.state", attr_T0State_read, LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT);
+    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t0.in_mask", attr_T0inMask_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
+    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t0.in_function", attr_T0idOutput_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
+    m_libera->AddScalar(tim + "rtc.connectors.t0.id", attr_T0IdInput_read, LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
 
     //T1-CONFIG
     m_libera->AddScalar(tim + "triggers.t1.source", attr_T1Source_read);
-
-    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t1.in_mask",
-    		attr_T1inMask_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
-
-    m_libera->AddScalar(tim + "rtc.t1.in_mask",
-    		attr_RtcT1inMask_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
-
-    m_libera->AddScalar(tim + "rtc.t1.in_function",
-    		attr_T1inFunction_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
-
-    m_libera->AddScalar(tim + "rtc.connectors.t1.id", attr_T1IdInput_read,
-    		LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
-
-    m_libera->AddScalar(tim + "connectors.t1.direction",
-    		attr_T1Direction_read,LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT);
-
+    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t1.in_mask", attr_T1inMask_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
+    m_libera->AddScalar(tim + "rtc.t1.in_mask", attr_RtcT1inMask_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
+    m_libera->AddScalar(tim + "rtc.t1.in_function",	attr_T1inFunction_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
+    m_libera->AddScalar(tim + "rtc.connectors.t1.id", attr_T1IdInput_read, LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
+    m_libera->AddScalar(tim + "connectors.t1.direction", attr_T1Direction_read, LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT);
     m_libera->AddScalar(tim + "rtc.connectors.t1.edge.falling", attr_T1EdgeFalling_read);
-
     m_libera->AddScalar(tim + "rtc.connectors.t1.edge.rising", attr_T1EdgeRising_read);
-
-    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t1.state",
-    		attr_T1State_read, LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT);
-
-    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t1.duration",
-    		attr_T1Duration_read, LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
-
-    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t1.in_function",
-    		attr_T1idOutput_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
+    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t1.state", attr_T1State_read, LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT);
+    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t1.duration", attr_T1Duration_read, LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
+    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t1.in_function", attr_T1idOutput_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
 
     //T2-CONFIG
     m_libera->AddScalar(tim + "triggers.t2.source", attr_T2Source_read);
-
-    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t2.in_mask",
-    		attr_T2inMask_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
-
-    m_libera->AddScalar(tim + "rtc.t2.in_mask",
-    		attr_RtcT2inMask_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
-
-    m_libera->AddScalar(tim + "rtc.t2.in_function",
-    		attr_T2inFunction_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
-
-    m_libera->AddScalar(tim + "rtc.connectors.t2.id", attr_T2IdInput_read,
-    		LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
-
-    m_libera->AddScalar(tim + "connectors.t2.direction", attr_T2Direction_read,
-    		LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT);
-
+    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t2.in_mask", attr_T2inMask_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
+    m_libera->AddScalar(tim + "rtc.t2.in_mask",	attr_RtcT2inMask_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
+    m_libera->AddScalar(tim + "rtc.t2.in_function",	attr_T2inFunction_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
+    m_libera->AddScalar(tim + "rtc.connectors.t2.id", attr_T2IdInput_read, LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
+    m_libera->AddScalar(tim + "connectors.t2.direction", attr_T2Direction_read,	LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT);
     m_libera->AddScalar(tim + "rtc.connectors.t2.edge.falling", attr_T2EdgeFalling_read);
-
     m_libera->AddScalar(tim + "rtc.connectors.t2.edge.rising", attr_T2EdgeRising_read);
-
-    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t2.state",
-    		attr_T2State_read, LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT);
-
-    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t2.in_function",
-    		attr_T2idOutput_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
-
-    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t2.duration",
-    		attr_T2Duration_read, LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
+    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t2.state", attr_T2State_read, LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT);
+    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t2.in_function", attr_T2idOutput_read, LiberaAttr::SPEC2LONG,LiberaAttr::LONG2SPEC);
+    m_libera->AddScalar(tim + "rtc.sfp_2_connectors.t2.duration", attr_T2Duration_read, LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
 
     //ILK-CONFIG
-    m_libera->AddScalar(tim + "rtc.mgt_out", attr_MgtOut_read,
-    		LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT); //TODO
-
-    m_libera->AddScalar(tim + "rtc.sfp_tx.interlock.id", attr_InterlockID_read,
-    		LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
+    m_libera->AddScalar(tim + "rtc.mgt_out", attr_MgtOut_read, LiberaAttr::USHORT2SHORT, LiberaAttr::SHORT2USHORT); //TODO
+    m_libera->AddScalar(tim + "rtc.sfp_tx.interlock.id", attr_InterlockID_read,	LiberaAttr::ULONG2LONG, LiberaAttr::LONG2ULONG);
 
     //POST MORTEM
-    m_libera->AddScalar(tim + "events.t1.count",
-        attr_PMNotificationCounter_read, LiberaAttr::ULL2SHORT);
+    m_libera->AddScalar(tim + "events.t1.count", attr_PMNotificationCounter_read, LiberaAttr::ULL2SHORT);
+
     }
     catch (...)
     {
     	m_state = Tango::FAULT;
-    	//m_state = Tango::UNKNOWN;
+    	m_status = "Connection to the Libera attribute node failed. Try to reinit the device.";
     	return;
     }
 
@@ -386,18 +332,17 @@ void LiberaEventReceiver::init_device()
       m_libera->Connect();
       m_state = Tango::ON;
       m_status = "Connected to Libera";
-
-
       //Initiliaze Libera Setting-Attributes
       init_settings();
 
     }
     catch (...)
     {
-      m_state = Tango::UNKNOWN;
+      //m_state = Tango::UNKNOWN;
+      //FAULT defines that software works but the device itself doesn't.
+      m_state = Tango::FAULT;
       m_status = "Connection to Libera failed. Try to reinit the device.";
     }
-
 
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::init_device
 }
@@ -1665,12 +1610,11 @@ void LiberaEventReceiver::write_T2inFunction(Tango::WAttribute &attr)
 	Tango::DevLong	w_val;
 	attr.get_write_value(w_val);
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::write_T2inFunction) ENABLED START -----*/
-        //m_libera->UpdateScalar(attr_T2inFunction_read, t2inFunction);
-        m_libera->UpdateScalar(attr_T2inFunction_read, w_val);
-        //std::vector<uint32_t> value = std::vector<uint32_t>();
-        //value.push_back(109);
-        //m_libera->m_root.GetNode(mci::Tokenize("boards."+c_timingBoard+".rtc.t2.in_function")).SetValue(value);
-
+    //m_libera->UpdateScalar(attr_T2inFunction_read, t2inFunction);
+    m_libera->UpdateScalar(attr_T2inFunction_read, w_val);
+    //std::vector<uint32_t> value = std::vector<uint32_t>();
+    //value.push_back(109);
+    //m_libera->m_root.GetNode(mci::Tokenize("boards."+c_timingBoard+".rtc.t2.in_function")).SetValue(value);
 
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::write_T2inFunction
 }
@@ -2191,7 +2135,7 @@ void LiberaEventReceiver::read_RTCTimestamp(Tango::Attribute &attr)
  *	Read attribute RTCTimestampState related method
  *	Description: State of the timestamp which is be taken by receiving optical events over SFP when reception is enabled
  *
- *	Data type:	Tango::DevLong
+ *	Data type:	Tango::DevShort
  *	Attr type:	Scalar
  */
 //--------------------------------------------------------
