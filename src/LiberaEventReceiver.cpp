@@ -2706,6 +2706,7 @@ void LiberaEventReceiver::reload_system_properties()
 	/*----- PROTECTED REGION ID(LiberaEventReceiver::reload_system_properties) ENABLED START -----*/
     //TODO
 	//	Add your own code
+    init_settings();
 
 	/*----- PROTECTED REGION END -----*/	//	LiberaEventReceiver::reload_system_properties
 }
@@ -2973,7 +2974,6 @@ void LiberaEventReceiver::init_settings()
     m_libera->UpdateScalar(attr_T2Duration_read, t2Duration);
     m_libera->UpdateScalar(attr_RtcT2inMask_read, rtcT2inMask);
 
-
     //InterlockId
     m_libera->UpdateScalar(attr_InterlockID_read, interlockId); //**
     m_libera->UpdateScalar(attr_MgtOut_read, mgtOut); //**
@@ -2983,6 +2983,7 @@ void LiberaEventReceiver::init_settings()
 	{
 		m_state = Tango::FAULT;
 //		m_status = Tango::UNKNOWN;
+        m_status = "The initialization failed.";
 		return;
 	}
 }// //--------------------------------------------------------
