@@ -18,11 +18,11 @@ Functionalities are described in the User Manual (v2.82) under following chapter
 Obligatory configuration:
 
 * To switch off application daemon
-** /etc/init.d/libera-ebpm stop
-* libera-ebpm.xml is stored after the stop
+  * /etc/init.d/libera-ebpm stop
+* /var/opt/libera/cfg/libera-ebpm.xml   is stored after the stop
 * Edit the XML file and change the timing frequency parameter
-** nano /var/opt/libera/cfg/libera-ebpm.xml
-** sfp_freq value="99930819"
+  * nano /var/opt/libera/cfg/libera-ebpm.xml
+  * sfp_freq value="99930819"
 * /etc/init.d/libera-ebpm start
 
 # TODO
