@@ -3,13 +3,12 @@
 
 Event receiver module: Used for synchronization and triggering purposes (Trigger, Interlock, Postmortem, Machine Clock); supports other event decoding & distribution.
 
-Functionalities are described in the User Manual (v2.82). Tested firmwares: 0x00005e9d and 0x00005e9e.
+* Assumptions:
+  * Firmwares: 0x00005e9d or 0x00005e9e.
+  * After the firmware update - do the power cycle:
+    * libera-bmc --power --cycle --set
 
-Do the power cycle after update:
-
-* libera-bmc --power --cycle --set
-
-They are written under following chapters:
+Functionalities are described in the User Manual (v2.82) under following chapters:
 
 * 2.8.7.1 (Upstream Optical Event Generation)
 * 2.8.7.2 (Absolute timestamp feature)
@@ -20,8 +19,7 @@ Obligatory configuration:
 
 * To switch off application daemon
 ** /etc/init.d/libera-ebpm stop
-* libera-ebpm.xml is stored after stop
-
+* libera-ebpm.xml is stored after the stop
 * Edit the XML file and change the timing frequency parameter
 ** nano /var/opt/libera/cfg/libera-ebpm.xml
 ** sfp_freq value="99930819"
