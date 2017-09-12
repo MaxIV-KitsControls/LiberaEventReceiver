@@ -4,7 +4,7 @@
 Event receiver module: Used for synchronization and triggering purposes (Trigger, Interlock, Postmortem, Machine Clock); supports other event decoding & distribution.
 
 * Assumptions:
-  * Firmwares: 0x00005e9d or 0x00005e9e.
+  * Firmwares: 0x00005e9d
   * After the firmware update - do the power cycle:
     * libera-bmc --power --cycle --set
 
