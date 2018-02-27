@@ -383,7 +383,7 @@ void LiberaEventReceiver::init_device()
     try
     {
 
-      m_libera->Connect();
+      m_libera->Connect(true);
       m_state = Tango::ON;
       m_status = "Connected to Libera";
 

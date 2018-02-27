@@ -1,15 +1,15 @@
-tangods-liberaeventreceiver (3.2.0) unstable; urgency=low
+tangods-liberaeventreceiver (2.3.0) unstable; urgency=low
 
-  * Support libera3.2 API and Ubuntu 14.04
+  * Merge Itech's recommendations to the code 
 
- -- Vasileios Martos <vasileios.martos> Wed, 29 Mar 2017 12:00:00 +0000
+ -- Vasileios Martos <vasileios.martos> Fri, 16 Feb 2018 12:00:00 +0000
 
 tangods-liberaeventreceiver (2.2.0) unstable; urgency=low
 
   * Remove platform connection and attributes from device
 
  -- Vasileios Martos <vasileios.martos> Fri, 3 Feb 2017 12:00:00 +0000
- 
+
 tangods-liberaeventreceiver (2.1.0) unstable; urgency=low
 
   * Added new timing attributes MCLock and PLLClockGood
@@ -17,11 +17,11 @@ tangods-liberaeventreceiver (2.1.0) unstable; urgency=low
   * Added new functions for setting timing alarm status.
 
  -- Vasileios Martos <vasileios.martos> Mon, 15 November 2016 12:00:00 +0000
- 
+
 tangods-liberaeventreceiver (2.0.1) unstable; urgency=low
 
   * Bug Fix StartSynchronization command.
-  
+
  -- Vasileios Martos <vasileios.martos> Mon, 23 Jun 2016 12:00:00 +0000
 
 tangods-liberaeventreceiver (2.0.0) unstable; urgency=low
@@ -29,4 +29,3 @@ tangods-liberaeventreceiver (2.0.0) unstable; urgency=low
   * Split main repo, initial version of LiberaEventReceiver inividual package
 
  -- Vasileios Martos <vasileios.martos> Mon, 23 Jun 2016 12:00:00 +0000
- 
