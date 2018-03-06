@@ -27,10 +27,10 @@ MAKE_ENV = /usr/share/pogo/preferences
 # PACKAGE_NAME is the name of the library/device/exe you want to build
 #
 PACKAGE_NAME = LiberaEventReceiver
-MAJOR_VERS   = 1
+MAJOR_VERS   = 3
 MINOR_VERS   = 3
 RELEASE      = Release_$(MAJOR_VERS)_$(MINOR_VERS)
-LIBERA_VERSION = 2.9
+LIBERA_VERSION = $(LIBERA_API)
 
 # #=============================================================================
 # # RELEASE_TYPE
@@ -80,14 +80,17 @@ LIB_DIR_USER= -L /opt/libera/lib
 #   - '-ldl -lpthread' is automatically appended in all cases
 #
 # !!! ATTENTION !!!
-# Be aware that the order matters. 
+# Be aware that the order matters.
 # For example if you must link with libA, and if libA depends itself on libB
 # you must use '-lA -lB' in this order as link flags, otherwise you will get
 # 'undefined reference' errors
 #
 #LFLAGS_USR+=
-LFLAGS_USR+= -lliberacommon -lliberamci$(LIBERA_VERSION) -lliberainet$(LIBERA_VERSION) -lliberaistd$(LIBERA_VERSION)
-
+ifeq ($(LIBERA_VERSION),2.9)
+	LFLAGS_USR+= -lliberacommon -lliberamci$(LIBERA_VERSION) -lliberainet$(LIBERA_VERSION) -lliberaistd$(LIBERA_VERSION)
+else
+	LFLAGS_USR+= -lliberacommon -lliberamci$(LIBERA_VERSION) -lliberainet$(LIBERA_VERSION) -lliberaistd$(LIBERA_VERSION) -lliberaisig$(LIBERA_VERSION)
+endif
 #=============================================================================
 # CXXFLAGS_USR lists the compilation flags specific for your library/device/exe
 # This is the place where to put your compile-time macros using '-Dmy_macro'
@@ -98,12 +101,12 @@ CXXFLAGS_USR+= -Wall -std=c++0x -D_GLIBCXX_USE_NANOSLEEP
 
 
 #=============================================================================
-# TANGO_REQUIRED 
+# TANGO_REQUIRED
 # - TRUE  : your project depends on TANGO
 # - FALSE : your project does not depend on TANGO
 #-----------------------------------------------------------------------------
 # - NOTE : if PROJECT_TYPE is set to DEVICE, TANGO will be auto. added
-#-----------------------------------------------------------------------------  
+#-----------------------------------------------------------------------------
 TANGO_REQUIRED = TRUE
 
 
@@ -122,7 +125,7 @@ include $(MAKE_ENV)/tango.opt
 #=============================================================================
 # SVC_OBJS is the list of all objects needed to make the output
 #
-SVC_INCL =  $(PACKAGE_NAME).h $(PACKAGE_NAME)Class.h 
+SVC_INCL =  $(PACKAGE_NAME).h $(PACKAGE_NAME)Class.h
 
 
 SVC_OBJS =      \
@@ -130,7 +133,7 @@ SVC_OBJS =      \
         $(OBJDIR)/$(PACKAGE_NAME)Class.o \
         $(OBJDIR)/$(PACKAGE_NAME)StateMachine.o \
         $(OBJDIR)/ClassFactory.o \
-        $(OBJDIR)/main.o 
+        $(OBJDIR)/main.o
 
 #=============================================================================
 #	include common targets
@@ -151,5 +154,3 @@ ifeq ($(PROJECT_TYPE),DEVICE)
 	mv $(OUTPUT_DIR)/$(PROJECT_NAME) $(INSTALL_DIR)
 	ls -l $(INSTALL_DIR)/$(PROJECT_NAME)
 endif
-
-
